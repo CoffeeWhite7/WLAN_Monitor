@@ -10,11 +10,18 @@ if errorlevel 1 (
 cd /d "%~dp0"
 if not exist out\x64\Release mkdir out\x64\Release
 
+rc /nologo /fo out\x64\Release\WLAN_Monitor.res src\WLAN_Monitor.rc
+if errorlevel 1 (
+  echo [ERROR] rc failed
+  exit /b 1
+)
+
 cl /nologo /std:c++17 /EHsc /O2 /utf-8 /W3 /DUNICODE /D_UNICODE /DWIN32_LEAN_AND_MEAN ^
    src\WLAN_Monitor.cpp ^
    /Fo:out\x64\Release\ ^
    /Fe:out\x64\Release\WLAN_Monitor.exe ^
    /link /MANIFEST:EMBED /MANIFESTUAC:"level='requireAdministrator' uiAccess='false'" ^
+   out\x64\Release\WLAN_Monitor.res ^
    wlanapi.lib comctl32.lib shell32.lib user32.lib gdi32.lib
 if errorlevel 1 (
   echo [ERROR] build failed

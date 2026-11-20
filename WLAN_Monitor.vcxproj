@@ -68,5 +68,9 @@
     <None Include="build.bat" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ResourceCompile Include="src\WLAN_Monitor.rc" />
+  </ItemGroup>
+
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>
