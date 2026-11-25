@@ -42,6 +42,7 @@ build.bat
 - **需要管理员权限**：非提权进程查询 WLAN 状态会被系统拒绝。
 - **漫游后会失效**：系统切回 DFS 信道（信号最强）时热点会再次起不来，重新点一次「自动选可用」即可。
 - **6 GHz 不支持**：Windows 热点 API 上限为 5 GHz（网卡硬件本身支持 6 GHz）。
+- **热点突然无法启动**时，用管理员 PowerShell 运行 `tools\heal-ics.ps1`，它会自动诊断并尝试修复，修不好会明确提示重启。
 - 详细背景与排查记录见 [docs/热点故障诊断报告.md](docs/热点故障诊断报告.md)。
 
 ## 目录
@@ -51,6 +52,7 @@ build.bat
 ├─ docs/                    截图与背景文档
 ├─ bin/                     预编译产物（未纳入版本库）
 ├─ build.bat                命令行编译
+├─ tools/heal-ics.ps1       热点起不来时的一键诊断与修复
 └─ WLAN_Monitor.sln/.vcxproj
 ```
 
